@@ -1,0 +1,131 @@
+<?php 
+    $categories = null;
+    $category_posts = [];
+
+    if(isset($_GET["category"])) 
+    {
+        $categories = $_GET["category"];
+    }
+    
+    if($categories !== null && isset($posts[$categories]))
+    {
+        $category_posts =$posts[$categories];
+    }
+
+?>
+
+<main id="home" class="p-3">
+    <h1 class="text-center m-5"><!--Design--><?= ucfirst($categories); ?></h1>
+    <?php 
+    if($categories !== null && count($category_posts) > 0)
+    {
+        ?>
+        <ul class="row p-0">
+            <?php
+            foreach($category_posts as $post)
+            {
+                ?>
+            <li class="col-4 my-3">
+                <article class="card">
+                    <header class="card-header p-0">
+                        <img src="https://picsum.photos/id/1/550/250" class="card-img-top" alt="" />
+                        <h3 class="card-title px-2 py-3">
+                            <?= $post["title"]; ?>
+                        </h3>
+                    </header>
+                    <section class="card-body p-2">
+                        <p class="card-text">
+                           <?= $post["excerpt"]; ?>
+                        </p>
+                    </section>
+                    <footer class="p-2">
+                        <a href="#" class="btn btn-primary">Lire l'article</a>
+                    </footer>
+                </article>
+            </li>
+           <!--  <li class="col-4 my-3">
+                <article class="card">
+                    <header class="card-header p-0">
+                        <img src="https://picsum.photos/id/13/550/250" class="card-img-top" alt="" />
+                        <h3 class="card-title px-2 py-3">
+                            Titre de l'article
+                        </h3>
+                    </header>
+                    <section class="card-body p-2">
+                        <p class="card-text">
+                            Extrait de l'article
+                        </p>
+                    </section>
+                    <footer class="p-2">
+                        <a href="#" class="btn btn-primary">Lire l'article</a>
+                    </footer>
+                </article>
+            </li>
+            <li class="col-4 my-3">
+                <article class="card">
+                    <header class="card-header p-0">
+                        <img src="https://picsum.photos/id/24/550/250" class="card-img-top" alt="" />
+                        <h3 class="card-title px-2 py-3">
+                            Titre de l'article
+                        </h3>
+                    </header>
+                    <section class="card-body p-2">
+                        <p class="card-text">
+                            Extrait de l'article
+                        </p>
+                    </section>
+                    <footer class="p-2">
+                        <a href="#" class="btn btn-primary">Lire l'article</a>
+                    </footer>
+                </article>
+            </li>
+            <li class="col-4 my-3">
+                <article class="card">
+                    <header class="card-header p-0">
+                        <img src="https://picsum.photos/id/36/550/250" class="card-img-top" alt="" />
+                        <h3 class="card-title px-2 py-3">
+                            Titre de l'article
+                        </h3>
+                    </header>
+                    <section class="card-body p-2">
+                        <p class="card-text">
+                            Extrait de l'article
+                        </p>
+                    </section>
+                    <footer class="p-2">
+                        <a href="#" class="btn btn-primary">Lire l'article</a>
+                    </footer>
+                </article>
+            </li>
+            <li class="col-4 my-3">
+                <article class="card">
+                    <header class="card-header p-0">
+                        <img src="https://picsum.photos/id/42/550/250" class="card-img-top" alt="" />
+                        <h3 class="card-title px-2 py-3">
+                            Titre de l'article
+                        </h3>
+                    </header>
+                    <section class="card-body p-2">
+                        <p class="card-text">
+                            Extrait de l'article
+                        </p>
+                    </section>
+                    <footer class="p-2">
+                        <a href="#" class="btn btn-primary">Lire l'article</a>
+                    </footer>
+                </article>
+            </li> -->
+            <?php
+            }
+            ?>
+        </ul>
+        <?php
+    }
+    else
+    {
+        ?>
+        <p>No articles for this category.</p>
+        <?php
+    }
+    ?>
+</main>
